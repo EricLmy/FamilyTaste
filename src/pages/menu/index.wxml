@@ -1,0 +1,124 @@
+<!--pages/menu/index.wxml-->
+<view class="container">
+  <!-- 搜索区域 -->
+  <view class="search-container">
+    <view class="search-box">
+      <image src="../../images/search.png" class="search-icon"></image>
+      <input type="text" placeholder="搜索菜品" bindinput="onSearchInput" confirm-type="search" value="{{searchKeyword}}"/>
+      <view class="clear-icon" bindtap="clearSearch" wx:if="{{searchKeyword}}">
+        <image src="../../images/clear.png"></image>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 分类标签 -->
+  <view class="category-container">
+    <scroll-view scroll-x="true" class="category-scroll" enhanced show-scrollbar="{{false}}">
+      <view class="category-list">
+        <view class="category-item {{currentCategory === 'all' ? 'active' : ''}}" 
+              bindtap="switchCategory" data-category="all">
+          全部
+        </view>
+        <view class="category-item {{currentCategory === 'recent' ? 'active' : ''}}" 
+              bindtap="switchCategory" data-category="recent">
+          <image src="../../images/time.png" class="category-icon"></image>
+          最近浏览
+        </view>
+        <view class="category-item {{currentCategory === 'favorite' ? 'active' : ''}}" 
+              bindtap="switchCategory" data-category="favorite">
+          <image src="../../images/favorite.png" class="category-icon"></image>
+          我的收藏
+        </view>
+        <view class="category-item {{currentCategory === 'hot' ? 'active' : ''}}" 
+              bindtap="switchCategory" data-category="hot">
+          <image src="../../images/star.png" class="category-icon"></image>
+          热门菜品
+        </view>
+        <view class="category-item {{currentCategory === 'create' ? 'active' : ''}}" 
+              bindtap="switchCategory" data-category="create">
+          <image src="../../images/add_small.png" class="category-icon"></image>
+          我的创建
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+  
+  <!-- 推荐菜品区域 -->
+  <view class="recommend-container" wx:if="{{currentCategory === 'all' && !searchKeyword}}">
+    <view class="section-title">推荐菜品</view>
+    <scroll-view scroll-x="true" class="recommend-scroll" enhanced show-scrollbar="{{false}}">
+      <view class="recommend-list">
+        <view class="recommend-item" wx:for="{{recommendDishes}}" wx:key="id" bindtap="goToDetail" data-id="{{item.id}}">
+          <view class="recommend-image">
+            <image src="{{item.image}}" mode="aspectFill"></image>
+          </view>
+          <view class="recommend-info">
+            <view class="recommend-name">{{item.name}}</view>
+            <view class="recommend-rating">
+              <image src="../../images/star.png"></image>
+              <text>{{item.rating}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+  
+  <!-- 筛选条件 -->
+  <view class="filter-container">
+    <view class="filter-item {{currentFilter === 'default' ? 'active' : ''}}" 
+          bindtap="switchFilter" data-filter="default">
+      默认排序
+    </view>
+    <view class="filter-item {{currentFilter === 'rating' ? 'active' : ''}}" 
+          bindtap="switchFilter" data-filter="rating">
+      评分最高
+    </view>
+    <view class="filter-item {{currentFilter === 'difficulty' ? 'active' : ''}}" 
+          bindtap="switchFilter" data-filter="difficulty">
+      简单优先
+    </view>
+  </view>
+  
+  <!-- 菜品列表 -->
+  <view class="dish-list" wx:if="{{dishes.length > 0}}">
+    <view class="dish-item" wx:for="{{dishes}}" wx:key="id" bindtap="goToDetail" data-id="{{item.id}}">
+      <view class="dish-image">
+        <image src="{{item.image}}" mode="aspectFill"></image>
+        <view class="dish-favorite" catchtap="toggleFavorite" data-id="{{item.id}}" data-index="{{index}}">
+          <image src="{{item.isFavorite ? '../../images/favorite_active.png' : '../../images/favorite.png'}}"></image>
+        </view>
+      </view>
+      <view class="dish-info">
+        <view class="dish-name">{{item.name}}</view>
+        <view class="dish-desc">{{item.description}}</view>
+        <view class="dish-meta">
+          <view class="dish-difficulty">
+            <image src="../../images/difficulty.png"></image>
+            <text>{{item.difficulty}}</text>
+          </view>
+          <view class="dish-time">
+            <image src="../../images/time.png"></image>
+            <text>{{item.cookingTime}}分钟</text>
+          </view>
+          <view class="dish-rating">
+            <image src="../../images/star.png"></image>
+            <text>{{item.rating}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 空状态 -->
+  <view class="empty-state" wx:else>
+    <image src="../../images/empty_dish.png"></image>
+    <view>暂无菜品数据</view>
+    <view class="empty-tips">可以尝试更换筛选条件或创建新菜品</view>
+  </view>
+  
+  <!-- 悬浮按钮 -->
+  <view class="float-button" bindtap="createDish">
+    <image src="../../images/add.png"></image>
+  </view>
+</view>

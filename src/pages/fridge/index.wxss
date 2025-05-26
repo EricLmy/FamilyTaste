@@ -1,0 +1,278 @@
+/* fridge/index.wxss */
+.container {
+  padding: 30rpx;
+}
+
+/* 搜索栏 */
+.search-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30rpx;
+  width: 100%;
+}
+
+.search-input-wrap {
+  display: flex;
+  align-items: center;
+  background-color: #F5F5F5;
+  border-radius: 30rpx;
+  padding: 10rpx 20rpx;
+  flex: 1;
+  margin-right: 20rpx;
+}
+
+.search-input {
+  flex: 1;
+  height: 60rpx;
+  margin: 0 10rpx;
+  font-size: 28rpx;
+}
+
+.action-buttons {
+  display: flex;
+  align-items: center;
+}
+
+.scan-btn, .add-btn {
+  width: 80rpx;
+  height: 80rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #FF8C69;
+  border-radius: 50%;
+  margin-left: 20rpx;
+}
+
+.scan-btn image, .add-btn image {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+/* 分类滚动栏 */
+.category-scroll {
+  width: 100%;
+  white-space: nowrap;
+  margin-bottom: 30rpx;
+}
+
+.category-list {
+  display: inline-block;
+  padding: 10rpx 0;
+}
+
+.category-item {
+  display: inline-block;
+  padding: 10rpx 30rpx;
+  margin-right: 20rpx;
+  font-size: 28rpx;
+  color: #666;
+  background-color: #F5F5F5;
+  border-radius: 30rpx;
+}
+
+.category-item.active {
+  background-color: #FF8C69;
+  color: white;
+}
+
+/* 即将过期提醒 */
+.expiring-section {
+  width: 100%;
+  background-color: #FFF3E0;
+  border-radius: 12rpx;
+  margin-bottom: 30rpx;
+  overflow: hidden;
+}
+
+.expiring-section.collapsed {
+  background-color: #FFE4B5;
+}
+
+.expiring-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx;
+  border-bottom: 1rpx solid #FFE0B2;
+}
+
+.expiring-title {
+  display: flex;
+  align-items: center;
+}
+
+.expiring-title image {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 10rpx;
+}
+
+.expiring-title text {
+  font-size: 28rpx;
+  color: #FF8C00;
+  font-weight: bold;
+}
+
+.expiring-toggle image {
+  width: 30rpx;
+  height: 30rpx;
+}
+
+.expiring-list {
+  padding: 10rpx 20rpx;
+}
+
+.expiring-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15rpx 0;
+  border-bottom: 1rpx solid #FFE0B2;
+}
+
+.expiring-item:last-child {
+  border-bottom: none;
+}
+
+.expiring-item-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.expiring-item-name {
+  font-size: 30rpx;
+  color: #333;
+  margin-bottom: 5rpx;
+}
+
+.expiring-item-date {
+  font-size: 24rpx;
+  color: #FF8C00;
+}
+
+.expiring-item-actions {
+  display: flex;
+}
+
+.use-btn {
+  font-size: 26rpx;
+  color: #FF8C69;
+  padding: 8rpx 20rpx;
+  border: 1rpx solid #FF8C69;
+  border-radius: 20rpx;
+}
+
+/* 食材列表 */
+.fridge-list {
+  width: 100%;
+}
+
+.fridge-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30rpx;
+  background-color: white;
+  border-radius: 12rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 2rpx 10rpx 0 rgba(0, 0, 0, 0.05);
+}
+
+.fridge-item-info {
+  flex: 1;
+  margin-right: 20rpx;
+}
+
+.fridge-item-name-wrap {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10rpx;
+}
+
+.fridge-item-name {
+  font-size: 32rpx;
+  color: #333;
+  font-weight: bold;
+}
+
+.fridge-item-amount {
+  font-size: 28rpx;
+  color: #666;
+}
+
+.fridge-item-details {
+  display: flex;
+  margin-bottom: 10rpx;
+}
+
+.fridge-item-location {
+  font-size: 26rpx;
+  color: #666;
+  margin-right: 20rpx;
+  background-color: #F0F0F0;
+  padding: 4rpx 12rpx;
+  border-radius: 6rpx;
+}
+
+.fridge-item-date {
+  font-size: 26rpx;
+  color: #FF8C00;
+}
+
+.fridge-item-notes {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.fridge-item-actions {
+  display: flex;
+  flex-direction: column;
+}
+
+.action-btn {
+  width: 60rpx;
+  height: 60rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10rpx;
+}
+
+.action-btn image {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+/* 空冰箱提示 */
+.empty-fridge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 100rpx 0;
+}
+
+.empty-fridge image {
+  width: 200rpx;
+  height: 200rpx;
+  margin-bottom: 30rpx;
+}
+
+.empty-fridge text {
+  font-size: 28rpx;
+  color: #999;
+  margin-bottom: 30rpx;
+}
+
+.add-food-btn {
+  width: 80%;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 30rpx;
+}
+
+/* 底部安全区域 */
+.safe-area {
+  height: 30rpx;
+} 

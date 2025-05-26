@@ -1,0 +1,39 @@
+<!--pages/personal/index.wxml-->
+<view class="container">
+  <view class="userinfo">
+    <block wx:if="{{!hasUserInfo && canIUse}}">
+      <button open-type="getUserInfo" bindgetuserinfo="getUserInfo" class="userinfo-btn"> 获取头像昵称 </button>
+    </block>
+    <block wx:else>
+      <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+  
+  <view class="menu-list">
+    <view class="menu-item">
+      <image class="menu-icon" src="../../images/family.png"></image>
+      <text>家庭成员管理</text>
+      <image class="arrow" src="../../images/arrow_right.png"></image>
+    </view>
+    <view class="menu-item">
+      <image class="menu-icon" src="../../images/history.png"></image>
+      <text>历史菜单</text>
+      <image class="arrow" src="../../images/arrow_right.png"></image>
+    </view>
+    <view class="menu-item">
+      <image class="menu-icon" src="../../images/favorite.png"></image>
+      <text>我的收藏</text>
+      <image class="arrow" src="../../images/arrow_right.png"></image>
+    </view>
+    <view class="menu-item">
+      <image class="menu-icon" src="../../images/settings.png"></image>
+      <text>设置</text>
+      <image class="arrow" src="../../images/arrow_right.png"></image>
+    </view>
+  </view>
+  
+  <view class="version">
+    <text>版本号：1.0.0</text>
+  </view>
+</view>

@@ -1,0 +1,93 @@
+<!--index.wxml-->
+<view class="container">
+  <!-- 顶部日期显示 -->
+  <view class="header">
+    <view class="date">{{today}}</view>
+    <view wx:if="{{!hasUserInfo && canIUse}}" class="user-info">
+      <button open-type="getUserInfo" bindgetuserinfo="getUserInfo" class="auth-btn">登录</button>
+    </view>
+    <view wx:else class="user-info">
+      <image class="user-avatar" src="{{userInfo.avatarUrl}}"></image>
+      <text class="user-name">{{userInfo.nickName}}</text>
+    </view>
+  </view>
+
+  <!-- 今日菜单展示 -->
+  <view class="today-menu card" wx:if="{{todayMenu}}">
+    <view class="title">今日菜单</view>
+    
+    <!-- 早餐 -->
+    <view class="meal-section">
+      <view class="meal-header">
+        <text class="meal-type meal-breakfast">早餐</text>
+      </view>
+      <view class="meal-list">
+        <view class="meal-item" wx:for="{{todayMenu.breakfast}}" wx:key="id" bindtap="onDishTap" data-id="{{item.id}}">
+          <image class="meal-image" src="{{item.image}}"></image>
+          <text class="meal-name">{{item.name}}</text>
+        </view>
+      </view>
+    </view>
+    
+    <!-- 午餐 -->
+    <view class="meal-section">
+      <view class="meal-header">
+        <text class="meal-type meal-lunch">午餐</text>
+      </view>
+      <view class="meal-list">
+        <view class="meal-item" wx:for="{{todayMenu.lunch}}" wx:key="id" bindtap="onDishTap" data-id="{{item.id}}">
+          <image class="meal-image" src="{{item.image}}"></image>
+          <text class="meal-name">{{item.name}}</text>
+        </view>
+      </view>
+    </view>
+    
+    <!-- 晚餐 -->
+    <view class="meal-section">
+      <view class="meal-header">
+        <text class="meal-type meal-dinner">晚餐</text>
+      </view>
+      <view class="meal-list">
+        <view class="meal-item" wx:for="{{todayMenu.dinner}}" wx:key="id" bindtap="onDishTap" data-id="{{item.id}}">
+          <image class="meal-image" src="{{item.image}}"></image>
+          <text class="meal-name">{{item.name}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 没有菜单时的提示 -->
+  <view class="empty-menu card" wx:else>
+    <view class="title">今日菜单</view>
+    <view class="empty-tip">
+      <image class="empty-icon" src="../../images/empty_menu.png"></image>
+      <text>今天还没有安排菜单</text>
+      <button class="btn-primary add-menu-btn" bindtap="onEntranceTap" data-url="/pages/menu/plan?type=day">添加今日菜单</button>
+    </view>
+  </view>
+  
+  <!-- 功能入口区 - 2x2布局 -->
+  <view class="entrances-grid card">
+    <view class="title">功能入口</view>
+    <view class="entrance-row">
+      <view class="entrance-item" bindtap="onEntranceTap" data-url="{{entrances[0].url}}">
+        <image class="entrance-icon" src="{{entrances[0].icon}}"></image>
+        <text class="entrance-name">{{entrances[0].name}}</text>
+      </view>
+      <view class="entrance-item" bindtap="onEntranceTap" data-url="{{entrances[1].url}}">
+        <image class="entrance-icon" src="{{entrances[1].icon}}"></image>
+        <text class="entrance-name">{{entrances[1].name}}</text>
+      </view>
+    </view>
+    <view class="entrance-row">
+      <view class="entrance-item" bindtap="onEntranceTap" data-url="{{entrances[2].url}}">
+        <image class="entrance-icon" src="{{entrances[2].icon}}"></image>
+        <text class="entrance-name">{{entrances[2].name}}</text>
+      </view>
+      <view class="entrance-item" bindtap="onEntranceTap" data-url="{{entrances[3].url}}">
+        <image class="entrance-icon" src="{{entrances[3].icon}}"></image>
+        <text class="entrance-name">{{entrances[3].name}}</text>
+      </view>
+    </view>
+  </view>
+</view> 

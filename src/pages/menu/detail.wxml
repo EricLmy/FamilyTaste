@@ -1,0 +1,123 @@
+<!--pages/menu/detail.wxml-->
+<view class="container">
+  <!-- 顶部菜品图片 -->
+  <swiper class="dish-image-swiper" indicator-dots="{{dish.images.length > 1}}" autoplay circular>
+    <swiper-item wx:for="{{dish.images}}" wx:key="index">
+      <image src="{{item}}" mode="aspectFill" class="dish-image"></image>
+    </swiper-item>
+  </swiper>
+  
+  <!-- 菜品名称和收藏按钮 -->
+  <view class="dish-header">
+    <view class="dish-title">{{dish.name}}</view>
+    <view class="favorite-btn" bindtap="toggleFavorite">
+      <image src="{{dish.isFavorite ? '../../images/favorite_active.png' : '../../images/favorite.png'}}"></image>
+    </view>
+  </view>
+  
+  <!-- 菜品基本信息 -->
+  <view class="dish-info-section">
+    <view class="dish-info-item">
+      <image src="../../images/difficulty.png"></image>
+      <text>难度: {{dish.difficulty}}</text>
+    </view>
+    <view class="dish-info-item">
+      <image src="../../images/time.png"></image>
+      <text>时间: {{dish.cookingTime}}分钟</text>
+    </view>
+    <view class="dish-info-item">
+      <image src="../../images/star.png"></image>
+      <text>评分: {{dish.rating}}</text>
+    </view>
+  </view>
+  
+  <!-- 菜品描述 -->
+  <view class="dish-description">
+    <text>{{dish.description}}</text>
+  </view>
+  
+  <!-- 标签 -->
+  <view class="dish-tags" wx:if="{{dish.tags && dish.tags.length > 0}}">
+    <view class="tag-item" wx:for="{{dish.tags}}" wx:key="index">{{item}}</view>
+  </view>
+  
+  <!-- 切换内容栏 -->
+  <view class="tab-container">
+    <view class="tab-bar">
+      <view class="tab-item {{currentTab === 'ingredients' ? 'active' : ''}}" 
+            bindtap="switchTab" data-tab="ingredients">食材</view>
+      <view class="tab-item {{currentTab === 'steps' ? 'active' : ''}}" 
+            bindtap="switchTab" data-tab="steps">步骤</view>
+      <view class="tab-item {{currentTab === 'nutrition' ? 'active' : ''}}" 
+            bindtap="switchTab" data-tab="nutrition">营养</view>
+    </view>
+    
+    <!-- 食材内容 -->
+    <view class="tab-content" wx:if="{{currentTab === 'ingredients'}}">
+      <view class="ingredients-list">
+        <view class="ingredient-header">
+          <text class="ingredient-title">食材</text>
+          <text class="ingredient-amount">用量</text>
+        </view>
+        <view class="ingredient-item" wx:for="{{dish.ingredients}}" wx:key="index">
+          <view class="ingredient-name">{{item.name}}</view>
+          <view class="ingredient-quantity">{{item.amount}} {{item.unit}}</view>
+        </view>
+      </view>
+    </view>
+    
+    <!-- 步骤内容 -->
+    <view class="tab-content" wx:if="{{currentTab === 'steps'}}">
+      <view class="steps-list">
+        <view class="step-item" wx:for="{{dish.cookingSteps}}" wx:key="stepNumber">
+          <view class="step-number">{{item.stepNumber}}</view>
+          <view class="step-content">
+            <view class="step-text">{{item.description}}</view>
+            <image wx:if="{{item.image}}" src="{{item.image}}" mode="aspectFill" class="step-image"></image>
+            <view class="step-time" wx:if="{{item.timeInMinutes}}">约{{item.timeInMinutes}}分钟</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    
+    <!-- 营养内容 -->
+    <view class="tab-content" wx:if="{{currentTab === 'nutrition'}}">
+      <view class="nutrition-list">
+        <view class="nutrition-item">
+          <text>热量</text>
+          <text>{{dish.nutritionFacts.calories}} kcal</text>
+        </view>
+        <view class="nutrition-item">
+          <text>蛋白质</text>
+          <text>{{dish.nutritionFacts.protein}} g</text>
+        </view>
+        <view class="nutrition-item">
+          <text>脂肪</text>
+          <text>{{dish.nutritionFacts.fat}} g</text>
+        </view>
+        <view class="nutrition-item">
+          <text>碳水化合物</text>
+          <text>{{dish.nutritionFacts.carbs}} g</text>
+        </view>
+        <view class="nutrition-item" wx:if="{{dish.nutritionFacts.fiber}}">
+          <text>纤维素</text>
+          <text>{{dish.nutritionFacts.fiber}} g</text>
+        </view>
+        <view class="nutrition-item" wx:if="{{dish.nutritionFacts.sugar}}">
+          <text>糖分</text>
+          <text>{{dish.nutritionFacts.sugar}} g</text>
+        </view>
+        <view class="nutrition-item" wx:if="{{dish.nutritionFacts.sodium}}">
+          <text>钠</text>
+          <text>{{dish.nutritionFacts.sodium}} mg</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 底部操作栏 -->
+  <view class="bottom-bar">
+    <button class="btn-secondary" bindtap="addToMenu">加入菜单</button>
+    <button class="btn-primary" bindtap="startCooking">开始烹饪</button>
+  </view>
+</view>
