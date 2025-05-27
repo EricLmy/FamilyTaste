@@ -275,4 +275,159 @@
 /* 底部安全区域 */
 .safe-area {
   height: 30rpx;
+}
+
+.fridge-page {
+  min-height: 100vh;
+  background: #f8f8f8;
+  padding: 20rpx;
+}
+
+.action-bar {
+  background: #fff;
+  padding: 20rpx;
+  border-radius: 12rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0,0,0,0.1);
+}
+
+.search-box {
+  margin-bottom: 20rpx;
+}
+
+.search-box input {
+  background: #f5f5f5;
+  padding: 16rpx 30rpx;
+  border-radius: 30rpx;
+  font-size: 28rpx;
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn-scan,
+.btn-add {
+  width: 48%;
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8rpx;
+  font-size: 28rpx;
+}
+
+.btn-scan {
+  background: #1AAD19;
+  color: #fff;
+}
+
+.btn-add {
+  background: #f0f0f0;
+  color: #333;
+}
+
+.btn-scan image,
+.btn-add image {
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 10rpx;
+}
+
+.food-list {
+  margin-top: 20rpx;
+}
+
+.food-category {
+  background: #fff;
+  border-radius: 12rpx;
+  margin-bottom: 20rpx;
+  padding: 20rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0,0,0,0.1);
+}
+
+.category-header {
+  display: flex;
+  align-items: center;
+  padding-bottom: 20rpx;
+  border-bottom: 1rpx solid #eee;
+}
+
+.category-name {
+  font-size: 32rpx;
+  font-weight: bold;
+}
+
+.category-count {
+  font-size: 28rpx;
+  color: #999;
+  margin-left: 10rpx;
+}
+
+.food-item {
+  display: flex;
+  align-items: center;
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #eee;
+}
+
+.food-item:last-child {
+  border-bottom: none;
+}
+
+.food-image {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 8rpx;
+  margin-right: 20rpx;
+}
+
+.food-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.food-name {
+  font-size: 30rpx;
+  margin-bottom: 8rpx;
+}
+
+.food-amount {
+  font-size: 28rpx;
+  color: #666;
+  margin-bottom: 8rpx;
+}
+
+.food-expire {
+  font-size: 26rpx;
+  color: #999;
+}
+
+.expire-soon {
+  color: #ff4d4f;
+}
+
+.food-actions {
+  display: flex;
+  flex-direction: column;
+}
+
+.btn-edit,
+.btn-delete {
+  font-size: 24rpx;
+  padding: 8rpx 20rpx;
+  margin: 4rpx 0;
+  min-width: 100rpx;
+}
+
+.btn-edit {
+  background: #1AAD19;
+  color: #fff;
+}
+
+.btn-delete {
+  background: #ff4d4f;
+  color: #fff;
 } 

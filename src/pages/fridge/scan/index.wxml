@@ -1,0 +1,30 @@
+<view class="scan-page">
+  <!-- 扫码结果展示 -->
+  <view class="scan-result" wx:if="{{scanResult && foodInfo}}">
+    <view class="food-info">
+      <image class="food-image" src="{{foodInfo.image}}" mode="aspectFit"></image>
+      <view class="food-details">
+        <text class="food-name">{{foodInfo.name}}</text>
+        <text class="food-spec">规格：{{foodInfo.specification}}</text>
+        <text class="food-date">生产日期：{{foodInfo.productionDate}}</text>
+        <text class="food-expire">保质期：{{foodInfo.expiryDays}}天</text>
+      </view>
+    </view>
+    
+    <!-- 操作按钮 -->
+    <view class="action-buttons">
+      <button class="btn-rescan" bindtap="reScan">重新扫码</button>
+      <button class="btn-confirm" type="primary" bindtap="confirmAdd">确认添加</button>
+    </view>
+  </view>
+
+  <!-- 扫码提示 -->
+  <view class="scan-tip" wx:if="{{!scanResult}}">
+    <text>请将条形码对准扫描框</text>
+  </view>
+
+  <!-- 加载中 -->
+  <view class="loading" wx:if="{{loading}}">
+    <text>识别中...</text>
+  </view>
+</view> 

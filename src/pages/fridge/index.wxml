@@ -1,19 +1,19 @@
 <!--fridge/index.wxml-->
 <view class="container">
-  <!-- 头部搜索区 -->
-  <view class="search-bar">
-    <view class="search-input-wrap">
-      <icon type="search" size="16" color="#999"></icon>
-      <input class="search-input" placeholder="搜索食材" value="{{searchValue}}" bindinput="onSearchInput" confirm-type="search" />
-      <icon wx:if="{{searchValue.length > 0}}" type="clear" size="16" color="#999" bindtap="clearSearch"></icon>
+  <!-- 顶部操作栏 -->
+  <view class="action-bar">
+    <view class="search-box">
+      <input type="text" placeholder="搜索食材" bindinput="onSearch"/>
     </view>
     <view class="action-buttons">
-      <view class="scan-btn" bindtap="scanToAdd">
-        <image src="../../images/scan.png" mode="aspectFit"></image>
-      </view>
-      <view class="add-btn" bindtap="addItem">
-        <image src="../../images/add.png" mode="aspectFit"></image>
-      </view>
+      <button class="btn-scan" bindtap="goToScan">
+        <image src="/images/scan.png" mode="aspectFit"></image>
+        <text>扫码添加</text>
+      </button>
+      <button class="btn-add" bindtap="showAddModal">
+        <image src="/images/add.png" mode="aspectFit"></image>
+        <text>手动添加</text>
+      </button>
     </view>
   </view>
   
