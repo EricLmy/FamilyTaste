@@ -1,0 +1,38 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/fridge/fridge",
+    "pages/profile/profile"
+  ],
+  "window": {
+    "navigationBarTitleText": "家味食记",
+    "navigationBarBackgroundColor": "#ffffff",
+    "backgroundColor": "#f8f8f8",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#888888",
+    "selectedColor": "#2d8cf0",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/fridge/fridge",
+        "text": "冰箱管理",
+        "iconPath": "/images/fridge.png",
+        "selectedIconPath": "/images/fridge-active.png"
+      },
+      {
+        "pagePath": "pages/home/home",
+        "text": "主页",
+        "iconPath": "/images/home.png",
+        "selectedIconPath": "/images/home-active.png"
+      },
+      {
+        "pagePath": "pages/profile/profile",
+        "text": "个人中心",
+        "iconPath": "/images/user.png",
+        "selectedIconPath": "/images/user-active.png"
+      }
+    ]
+  }
+} 

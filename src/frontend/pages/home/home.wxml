@@ -1,0 +1,100 @@
+<view class="home-wrapper">
+  <view class="app-bar">
+    <text class="date">{{todayDate}} {{weekDay}}</text>
+  </view>
+
+  <view class="today-menu-title">今日菜单</view>
+  <view class="meal-cards">
+    <view class="meal-card">
+      <view class="meal-label-row">
+        <text class="meal-label">早餐</text>
+        <text class="dish-count">({{breakfastList.length}})</text>
+      </view>
+      <scroll-view class="dish-list-scroll" scroll-x="true">
+        <view class="dish-list">
+          <view class="dish-item" wx:for="{{breakfastList}}" wx:key="name" bindtap="showDishDetail" data-dish="{{item}}">
+            <image class="dish-thumb" src="{{item.image}}" mode="aspectFill" />
+            <text class="dish-name">{{item.name}}</text>
+            <view class="dish-nutrition">
+              <image class="icon-nutrition" src="/images/icon_cal.png" />{{item.calories}}
+              <image class="icon-nutrition" src="/images/icon_protein.png" />{{item.protein}}
+            </view>
+          </view>
+          <text wx:if="{{breakfastList.length === 0}}" class="dish-empty">—</text>
+        </view>
+      </scroll-view>
+    </view>
+    <view class="meal-card">
+      <view class="meal-label-row">
+        <text class="meal-label">午餐</text>
+        <text class="dish-count">({{lunchList.length}})</text>
+      </view>
+      <scroll-view class="dish-list-scroll" scroll-x="true">
+        <view class="dish-list">
+          <view class="dish-item" wx:for="{{lunchList}}" wx:key="name" bindtap="showDishDetail" data-dish="{{item}}">
+            <image class="dish-thumb" src="{{item.image}}" mode="aspectFill" />
+            <text class="dish-name">{{item.name}}</text>
+            <view class="dish-nutrition">
+              <image class="icon-nutrition" src="/images/icon_cal.png" />{{item.calories}}
+              <image class="icon-nutrition" src="/images/icon_protein.png" />{{item.protein}}
+            </view>
+          </view>
+          <text wx:if="{{lunchList.length === 0}}" class="dish-empty">—</text>
+        </view>
+      </scroll-view>
+    </view>
+    <view class="meal-card">
+      <view class="meal-label-row">
+        <text class="meal-label">晚餐</text>
+        <text class="dish-count">({{dinnerList.length}})</text>
+      </view>
+      <scroll-view class="dish-list-scroll" scroll-x="true">
+        <view class="dish-list">
+          <view class="dish-item" wx:for="{{dinnerList}}" wx:key="name" bindtap="showDishDetail" data-dish="{{item}}">
+            <image class="dish-thumb" src="{{item.image}}" mode="aspectFill" />
+            <text class="dish-name">{{item.name}}</text>
+            <view class="dish-nutrition">
+              <image class="icon-nutrition" src="/images/icon_cal.png" />{{item.calories}}
+              <image class="icon-nutrition" src="/images/icon_protein.png" />{{item.protein}}
+            </view>
+          </view>
+          <text wx:if="{{dinnerList.length === 0}}" class="dish-empty">—</text>
+        </view>
+      </scroll-view>
+    </view>
+  </view>
+
+  <view class="grid-entry">
+    <view class="entry-btn" bindtap="goTodayPlan">
+      <image class="entry-icon" src="/images/home-active.png" mode="aspectFit" />
+      <text class="entry-text">今日计划</text>
+    </view>
+    <view class="entry-btn" bindtap="goWeekPlan">
+      <image class="entry-icon" src="/images/home.png" mode="aspectFit" />
+      <text class="entry-text">周计划</text>
+    </view>
+    <view class="entry-btn" bindtap="goRoulette">
+      <image class="entry-icon" src="/images/fridge-active.png" mode="aspectFit" />
+      <text class="entry-text">转盘选菜</text>
+    </view>
+    <view class="entry-btn" bindtap="goDishLib">
+      <image class="entry-icon" src="/images/user-active.png" mode="aspectFit" />
+      <text class="entry-text">菜单库</text>
+    </view>
+  </view>
+
+  <view class="dish-detail-modal" wx:if="{{showDetail}}">
+    <view class="dish-detail-card">
+      <image class="detail-img" src="{{currentDish.image}}" mode="aspectFill" />
+      <view class="detail-title">{{currentDish.name}}</view>
+      <view class="detail-section">
+        <image class="icon-nutrition" src="/images/icon_cal.png" />{{currentDish.calories}}
+        <image class="icon-nutrition" src="/images/icon_protein.png" />{{currentDish.protein}}
+      </view>
+      <view class="detail-section">食材：{{currentDish.ingredients}}</view>
+      <view class="detail-section">做法：{{currentDish.steps}}</view>
+      <button class="close-btn" bindtap="closeDishDetail">关闭</button>
+    </view>
+    <view class="modal-mask"></view>
+  </view>
+</view> 

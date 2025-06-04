@@ -1,0 +1,6 @@
+.fridge-container {
+  padding: 40rpx;
+  text-align: center;
+  font-size: 32rpx;
+  color: #2d8cf0;
+} 

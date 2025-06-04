@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>家味食记 - 主页原型</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Roboto', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+      background: #f7f8fa;
+      color: #222;
+    }
+    .app-bar {
+      background: #fff;
+      padding: 18px 16px 10px 16px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .app-bar .date {
+      font-size: 18px;
+      font-weight: 700;
+    }
+    .app-bar .settings {
+      font-size: 20px;
+      color: #888;
+      cursor: pointer;
+    }
+    .welcome {
+      font-size: 14px;
+      color: #888;
+      margin-left: 2px;
+    }
+    .today-menu-card {
+      background: #fff;
+      margin: 18px 16px 10px 16px;
+      border-radius: 16px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      padding: 18px 16px;
+    }
+    .today-menu-title {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: #2d8cf0;
+    }
+    .meal-row {
+      display: flex;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .meal-label {
+      width: 48px;
+      font-size: 14px;
+      color: #888;
+    }
+    .meal-content {
+      flex: 1;
+      font-size: 15px;
+      color: #333;
+    }
+    .add-menu-btn {
+      display: block;
+      width: 100%;
+      margin: 12px 0 0 0;
+      padding: 10px 0;
+      background: linear-gradient(90deg, #2d8cf0 60%, #60a6f6 100%);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .add-menu-btn:hover {
+      background: linear-gradient(90deg, #60a6f6 60%, #2d8cf0 100%);
+    }
+    .grid-entry {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 18px;
+      margin: 24px 16px 80px 16px;
+    }
+    .entry-btn {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 0 18px 0;
+      font-size: 15px;
+      font-weight: 700;
+      color: #2d8cf0;
+      cursor: pointer;
+      border: none;
+      transition: box-shadow 0.2s, background 0.2s;
+    }
+    .entry-btn:hover {
+      background: #f0f6ff;
+      box-shadow: 0 4px 16px rgba(45,140,240,0.08);
+    }
+    .entry-icon {
+      font-size: 32px;
+      margin-bottom: 8px;
+    }
+    .bottom-nav {
+      position: fixed;
+      left: 0; right: 0; bottom: 0;
+      height: 60px;
+      background: #fff;
+      box-shadow: 0 -2px 8px rgba(0,0,0,0.04);
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      z-index: 20;
+    }
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 12px;
+      color: #888;
+      transition: color 0.2s;
+      cursor: pointer;
+    }
+    .nav-item.active {
+      color: #2d8cf0;
+      font-weight: 700;
+    }
+    .nav-icon {
+      font-size: 24px;
+      margin-bottom: 2px;
+    }
+    @media (max-width: 400px) {
+      .today-menu-card, .grid-entry { margin-left: 4px; margin-right: 4px; }
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css">
+</head>
+<body>
+  <div class="app-bar">
+    <div>
+      <span class="date">2024-06-03</span>
+      <span class="welcome">，欢迎回来！</span>
+    </div>
+    <span class="settings"><i class="ri-settings-3-line"></i></span>
+  </div>
+
+  <div class="today-menu-card">
+    <div class="today-menu-title">今日菜单</div>
+    <div class="meal-row">
+      <span class="meal-label">早餐</span>
+      <span class="meal-content">鸡蛋三明治、牛奶</span>
+    </div>
+    <div class="meal-row">
+      <span class="meal-label">午餐</span>
+      <span class="meal-content">番茄牛腩饭、炒青菜</span>
+    </div>
+    <div class="meal-row">
+      <span class="meal-label">晚餐</span>
+      <span class="meal-content">清蒸鲈鱼、紫菜蛋花汤</span>
+    </div>
+    <!-- 如无菜单，显示添加按钮 -->
+    <!-- <button class="add-menu-btn">去添加今日菜单</button> -->
+  </div>
+
+  <div class="grid-entry">
+    <button class="entry-btn">
+      <span class="entry-icon"><i class="ri-calendar-check-line"></i></span>
+      今日计划
+    </button>
+    <button class="entry-btn">
+      <span class="entry-icon"><i class="ri-calendar-event-line"></i></span>
+      周计划
+    </button>
+    <button class="entry-btn">
+      <span class="entry-icon"><i class="ri-shuffle-line"></i></span>
+      转盘选菜
+    </button>
+    <button class="entry-btn">
+      <span class="entry-icon"><i class="ri-restaurant-2-line"></i></span>
+      菜单库
+    </button>
+  </div>
+
+  <div class="bottom-nav">
+    <div class="nav-item">
+      <span class="nav-icon"><i class="ri-fridge-line"></i></span>
+      冰箱管理
+    </div>
+    <div class="nav-item active">
+      <span class="nav-icon"><i class="ri-home-5-line"></i></span>
+      主页
+    </div>
+    <div class="nav-item">
+      <span class="nav-icon"><i class="ri-user-3-line"></i></span>
+      个人中心
+    </div>
+  </div>
+</body>
+</html> 
